@@ -39,9 +39,9 @@ export class TodosController {
 
   @Delete(':id')
   async delete(@Param('id') id: number): Promise<any> {
-    const user = await this.todosService.findOne(id);
+    const todo = await this.todosService.findOne(id);
 
-    if (!user) {
+    if (!todo) {
       throw new NotFoundException('Todo does not exist!');
     }
 
