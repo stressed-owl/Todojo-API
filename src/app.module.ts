@@ -1,19 +1,18 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from "@nestjs/config";
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { DatabaseModule } from './database/database.module';
 import { TodosModule } from './todos/todos.module';
+import { ConfigModule } from '@nestjs/config';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { typeOrmConnectionConfig } from './config/typeorm.config';
+
+const envModule = ConfigModule.forRoot({
+  isGlobal: true,
+});
 
 @Module({
   imports: [
-    ConfigModule.forRoot({
-      envFilePath: ".env"
-    }),
-    DatabaseModule,
+    envModule,
+    TypeOrmModule.forRoot(typeOrmConnectionConfig),
     TodosModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}

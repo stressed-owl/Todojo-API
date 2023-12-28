@@ -6,8 +6,6 @@ import {
   Put,
   Param,
   Delete,
-  NotFoundException,
-  HttpCode,
 } from '@nestjs/common';
 import { TodosService } from './todos.service';
 import { Todo } from './todos.entity';
@@ -24,28 +22,23 @@ export class TodosController {
     return this.todosService.findAll();
   }
 
+  @Get(':id')
+  async findById(@Param('id') id: string): Promise<Todo> {
+    return this.todosService.findById(parseInt(id, 10));
+  }
+
   @Post()
-  @HttpCode(201)
   async create(@Body() todo: Todo): Promise<Todo> {
-    const createdTodo = this.todosService.create(todo);
-    return createdTodo;
+    return this.todosService.create(todo);
   }
 
   @Put(':id')
-  async update(@Param('id') id: number, @Body() todo: Todo): Promise<any> {
-    await this.todosService.update(id, todo);
-    return { message: 'Todo updated successfully' };
+  async update(@Param('id') id: string, @Body() todo: Todo): Promise<Todo> {
+    return this.todosService.update(parseInt(id, 10), todo);
   }
 
   @Delete(':id')
-  async delete(@Param('id') id: number): Promise<any> {
-    const todo = await this.todosService.findOne(id);
-
-    if (!todo) {
-      throw new NotFoundException('Todo does not exist!');
-    }
-
-    await this.todosService.delete(id);
-    return { message: 'Todo was deleted successfully' };
+  async delete(@Param('id') id: string): Promise<void> {
+    return this.todosService.delete(parseInt(id, 10));
   }
 }

@@ -10,22 +10,21 @@ export class TodosService {
     private todosRepository: Repository<Todo>,
   ) {}
 
-    // API methods to handle CRUD operations
+  // API methods to handle CRUD operations
 
   async findAll(): Promise<Todo[]> {
     return this.todosRepository.find();
   }
 
-  async findOne(id: number): Promise<Todo> {
+  async findById(id: number): Promise<Todo> {
     return this.todosRepository.findOne({ where: { id } });
   }
 
-  async create(todo: Partial<Todo>): Promise<Todo> {
-    const newTodo = this.todosRepository.create(todo);
-    return this.todosRepository.save(newTodo);
+  async create(todo: Todo): Promise<Todo> {
+    return this.todosRepository.save(todo);
   }
 
-  async update(id: number, todo: Partial<Todo>): Promise<Todo> {
+  async update(id: number, todo: Todo): Promise<Todo> {
     await this.todosRepository.update(id, todo);
     return this.todosRepository.findOne({ where: { id } });
   }

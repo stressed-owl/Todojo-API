@@ -13,7 +13,4 @@ export class Todo {
 
   @Column()
   date: string;
-
-  @Column({ default: false })
-  completed: boolean;
 }
