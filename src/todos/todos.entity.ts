@@ -11,6 +11,11 @@ export class Todo {
   @Column()
   description: string;
 
+  @Column({
+    default: 'Upcoming',
+  })
+  status: string;
+
   @Column()
   date: string;
 }
