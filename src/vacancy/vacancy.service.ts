@@ -1,5 +1,5 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { Injectable } from '@nestjs/common/decorators/core/injectable.decorator';
+import { InjectRepository } from '@nestjs/typeorm/dist/common/typeorm.decorators';
 import { Vacancy } from './vacancy.entity';
 import { Repository } from 'typeorm';
 

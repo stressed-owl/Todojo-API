@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
+import { Module } from '@nestjs/common/decorators/modules/module.decorator';
 import { TodosModule } from './todos/todos.module';
-import { ConfigModule } from '@nestjs/config';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule } from '@nestjs/config/dist/config.module';
+import { TypeOrmModule } from '@nestjs/typeorm/dist/typeorm.module';
 import { typeOrmConnectionConfig } from './config/typeorm.config';
 import { VacancyModule } from './vacancy/vacancy.module';
 import { ContactModule } from './contact/contact.module';

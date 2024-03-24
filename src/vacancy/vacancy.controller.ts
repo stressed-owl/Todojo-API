@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common/decorators';
 import { VacancyService } from './vacancy.service';
 import { Vacancy } from './vacancy.entity';
 

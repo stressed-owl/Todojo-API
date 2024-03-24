@@ -1,5 +1,5 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { Module } from '@nestjs/common/decorators/modules/module.decorator';
+import { TypeOrmModule } from '@nestjs/typeorm/dist/typeorm.module';
 import { ContactController } from './contact.controller';
 import { ContactService } from './contact.service';
 import { Contact } from './contact.entity';
