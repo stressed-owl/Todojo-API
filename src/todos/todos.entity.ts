@@ -12,5 +12,13 @@ export class Todo {
   description: string;
 
   @Column()
+  priority: string;
+
+  @Column()
   date: string;
+
+  @Column({
+    default: false,
+  })
+  completed: boolean;
 }
